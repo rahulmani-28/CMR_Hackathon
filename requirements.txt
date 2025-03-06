@@ -1,0 +1,3 @@
+flask, tensorflow,mne
+numpy,scipy,pandas
+sklearn

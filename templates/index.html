@@ -1,0 +1,180 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seizure Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Seizure Detection System</h1>
+        <form id="upload-form">
+            <div class="form-group">
+                <label for="edf-file">Upload EDF File:</label>
+                <input type="file" id="edf-file" name="edf_file" accept=".edf" required>
+            </div>
+            <div class="form-group">
+                <label for="seizure-file">Upload Seizure Annotations File:</label>
+                <input type="file" id="seizure-file" name="seizure_file" accept=".seizures" required>
+            </div>
+            <button type="submit">Upload and Analyze</button>
+        </form>
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <p><strong>Seizure Probability:</strong> <span id="seizure-probability"></span></p>
+            <p><strong>Model Prediction:</strong> <span id="binary-output"></span></p>
+            <p><strong>Ground Truth:</strong> <span id="ground-truth"></span></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            formData.append('edf_file', document.getElementById('edf-file').files[0]);
+            formData.append('seizure_file', document.getElementById('seizure-file').files[0]);
+            
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            if (response.ok) {
+                document.getElementById('seizure-probability').textContent = (result.seizure_probability * 100).toFixed(2) + '%';
+                document.getElementById('binary-output').textContent = result.binary_output === 1 ? 'Seizure Detected (1)' : 'No Seizure (0)';
+                document.getElementById('ground-truth').textContent = result.ground_truth === 1 ? 'Seizure Present (1)' : 'No Seizure (0)';
+                document.getElementById('results').classList.remove('hidden');
+            } else {
+                alert('Error: ' + result.error);
+            }
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seizure Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Seizure Detection System</h1>
+        <form id="upload-form">
+            <div class="form-group">
+                <label for="edf-file">Upload EDF File:</label>
+                <input type="file" id="edf-file" name="edf_file" accept=".edf" required>
+            </div>
+            <div class="form-group">
+                <label for="seizure-file">Upload Seizure Annotations File:</label>
+                <input type="file" id="seizure-file" name="seizure_file" accept=".seizures" required>
+            </div>
+            <button type="submit">Upload and Analyze</button>
+        </form>
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <p><strong>Seizure Probability:</strong> <span id="seizure-probability"></span></p>
+            <p><strong>Model Prediction:</strong> <span id="binary-output"></span></p>
+            <p><strong>Ground Truth:</strong> <span id="ground-truth"></span></p>
+        </div>
+        
+    </div>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            formData.append('edf_file', document.getElementById('edf-file').files[0]);
+            formData.append('seizure_file', document.getElementById('seizure-file').files[0]);
+            
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            if (response.ok) {
+                document.getElementById('seizure-probability').textContent = (result.seizure_probability * 100).toFixed(2) + '%';
+                document.getElementById('binary-output').textContent = result.binary_output === 1 ? 'Seizure Detected (1)' : 'No Seizure (0)';
+                document.getElementById('ground-truth').textContent = result.ground_truth === 1 ? 'Seizure Present (1)' : 'No Seizure (0)';
+                document.getElementById('results').classList.remove('hidden');
+            } else {
+                alert('Error: ' + result.error);
+            }
+        });
+    </script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seizure Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">EpiZure</a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Upload</a></li>
+                <li><a href="#">Results</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Seizure Prediction System</h1>
+        <form id="upload-form">
+            <div class="form-group">
+                <label for="edf-file">Upload EDF File:</label>
+                <input type="file" id="edf-file" name="edf_file" accept=".edf" required>
+            </div>
+            <div class="form-group">
+                <label for="seizure-file">Upload Seizure Annotations File:</label>
+                <input type="file" id="seizure-file" name="seizure_file" accept=".seizures" required>
+            </div>
+            <button type="submit">Upload and Analyze</button>
+        </form>
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <p><strong>Seizure Probability:</strong> <span id="seizure-probability"></span></p>
+            <p><strong>Model Prediction:</strong> <span id="binary-output"></span></p>
+            <p><strong>Ground Truth:</strong> <span id="ground-truth"></span></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            formData.append('edf_file', document.getElementById('edf-file').files[0]);
+            formData.append('seizure_file', document.getElementById('seizure-file').files[0]);
+            
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            if (response.ok) {
+                document.getElementById('seizure-probability').textContent = (result.seizure_probability * 100).toFixed(2) + '%';
+                document.getElementById('binary-output').textContent = result.binary_output === 1 ? 'Seizure Detected (1)' : 'No Seizure (0)';
+                document.getElementById('ground-truth').textContent = result.ground_truth === 1 ? 'Seizure Present (1)' : 'No Seizure (0)';
+                document.getElementById('results').classList.remove('hidden');
+            } else {
+                alert('Error: ' + result.error);
+            }
+        });
+    </script>
+</body>
+</html>

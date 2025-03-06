@@ -1,0 +1,5 @@
+from tensorflow.keras.models import load_model
+
+model = load_model("seizure_detection_lstm.h5")
+predictions = model.predict(X_test)
+print(predictions[:5])  # Print first few predictions
